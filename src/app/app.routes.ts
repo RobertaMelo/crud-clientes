@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { ListarClientesComponent } from './listar-clientes/listar-clientes.component';
-import { ClienteComponent } from './cliente/cliente.component';
+import { ListarClientesComponent } from '../pages/listar-clientes/listar-clientes.component';
+import { ClienteComponent } from '../pages/cliente/cliente.component';
+
 
 export const appRoutes: Routes = [
   { 
@@ -12,7 +13,7 @@ export const appRoutes: Routes = [
     component: ListarClientesComponent 
   },
   {
-    path: 'cliente/:id',
+    path: 'cliente',
     component: ClienteComponent
   },
   { 
