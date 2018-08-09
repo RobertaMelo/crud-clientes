@@ -1,3 +1,117 @@
-<p>
-  cliente works!
-</p>
+<form class="form-group needs-validation" #form="ngForm" novalidate enctype="multipart/form-data"> 
+  <h2>Cadastro</h2>
+    <hr/>
+    <form [formGroup]="formGroup" (ngSubmit)="salvaCliente(); $event.preventDefault()">
+      <input type="hidden" formControlName="id">
+      <div class="form-group row">
+        <div class="col-1">
+          Ativo
+          <label class="switch">
+            <input type="checkbox" formControlName="active">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="col-11 align-self-end">
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="federalIdType1" value="Physical" name="federalIdType" formControlName="federalIdType">
+              <label class="custom-control-label" for="federalIdType1">Pessoa Física</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="federalIdType2" value="Juridical" name="federalIdType" formControlName="federalIdType">
+              <label class="custom-control-label" for="federalIdType2">Pessoa Jurídica</label>
+            </div>
+        </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-5">
+              <label for="name">Nome *</label>
+              <input formControlName="name" class="form-control">
+              <div class="invalid-feedback text-right" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors">Campo obrigatório!</div>
+            </div>
+          <div class="col-5">
+            <label for="federalId">CPF *</label>
+            <input formControlName="federalId" class="form-control">
+            <div class="invalid-feedback text-right" *ngIf="formGroup.controls.federalId.dirty && formGroup.controls.federalId.errors">Campo obrigatório!</div>
+          </div>
+          <div class="col-2 align-self-end">
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="gender1" value="F" name="gender" formControlName="gender">
+              <label class="custom-control-label" for="gender1">Feminino</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="gender2" value="M" name="gender" formControlName="gender">
+              <label class="custom-control-label" for="gender2">Masculino</label>
+            </div>
+          </div>
+      </div>
+  
+    <div class="form-group row">
+      <div class="col-4">
+          <label for="registration">RG</label>
+          <input formControlName="registration" class="form-control">
+      </div>
+
+      <div class="col-4">
+          <label for="birthday">Data Nascimento</label>
+          <input type="date" formControlName="birthday" class="form-control"> 
+      </div>
+      <div class="col-4">
+          <label for="email">E-mail *</label>
+          <input formControlName="email" class="form-control">
+          <div class="invalid-feedback text-right" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors">Campo obrigatório!</div>
+        </div> 
+    </div>
+    <div class="form-group row">
+      <div class="col-6">
+          <label for="phone">Celular 1 *</label>
+          <input formControlName="phone" class="form-control">
+          <div class="invalid-feedback text-right" *ngIf="formGroup.controls.phone.dirty && formGroup.controls.phone.errors">Campo obrigatório!</div>
+      </div>
+      <div class="col-6">
+          <label for="phone2">Celular 2</label>
+          <input formControlName="phone2" class="form-control">
+      </div>
+    </div>
+
+      <div class="form-group row">
+        <div class="col-6">
+            <label for="residentialPhone">Fone Residencial</label>
+            <input formControlName="residentialPhone" class="form-control">
+        </div>
+
+        <div class="col-6">
+            <label for="commercialPhone">Fone Comercial</label>
+            <input formControlName="commercialPhone" class="form-control">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-6">
+            <label for="emergencyContact">Contato Emergencial</label>
+            <input formControlName="emergencyContact" class="form-control">
+        </div>
+
+        <div class="col-6">
+            <label for="emergencyPhone">Telefone Emergencial</label>
+            <input formControlName="emergencyPhone" class="form-control">
+        </div>
+      </div>
+
+    <div class="form-group row col-12">
+        <label for="emailCollection">E-mails de Cobrança *</label>
+        <input formControlName="emailCollection" class="form-control">
+          <div class="invalid-feedback text-right" *ngIf="formGroup.controls.emailCollection.dirty && formGroup.controls.emailCollection.errors">Campo obrigatório!</div>
+      </div> 
+
+    <div class="form-group row">
+      <div class="col-2">
+        <button type="button" class="btn btn-default btn-block" (click)="iniciaNovoCliente()">Limpar</button>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-success btn-block" (click)="salvaCliente()">Salvar</button>
+      </div>
+    </div>
+
+    <small id="fileHelp" class="form-text text-muted">* Campos obrigatórios.</small>
+  </form>
+</form>    

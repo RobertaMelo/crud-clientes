@@ -11,9 +11,9 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  save(cliente: ClienteDTO) {
+  salva(cliente: ClienteDTO) {
     return this.http.post(
-        `${API_CONFIG.baseUrl}/clientes`, 
+        `${API_CONFIG.baseUrl}/customer`, 
         cliente,
         { 
             observe: 'response', 
@@ -22,9 +22,9 @@ export class ClienteService {
     ); 
   }
 
-  update(cliente: ClienteDTO, id: number) {
+  altera(cliente: ClienteDTO) {
       return this.http.put(
-          `${API_CONFIG.baseUrl}/clientes/${id}`, 
+          `${API_CONFIG.baseUrl}/customer/`, 
           cliente,
           { 
               observe: 'response', 
@@ -33,9 +33,9 @@ export class ClienteService {
       ); 
   }
 
-  delete(id: number) {
+  exclui(id: number) {
       return this.http.delete(
-          `${API_CONFIG.baseUrl}/clientes/${id}`, 
+          `${API_CONFIG.baseUrl}/customer/${id}`, 
           { 
               observe: 'response', 
               responseType: 'text'
@@ -43,7 +43,7 @@ export class ClienteService {
       ); 
   }
 
-  findAll(): Observable<any> {
+  buscaTodos(): Observable<any> {
       return this.http.get<any>(`${API_CONFIG.baseUrl}/customers/`);
   }
 

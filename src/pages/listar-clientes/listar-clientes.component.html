@@ -1,20 +1,30 @@
-<div class="container">
-  <h1>Lista de Clientes</h1>
-  
-  <table class="table table-hover" cellspacing="0">
+<h2>Listagem</h2>
+<table class="table table-hover table-striped table-listagem">
     <thead>
-      <tr>
-        <th>Nome</th>
-        <th>CPF/CNPJ</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientes">
-        <td>{{cliente.name}}</td>
-        <td>{{cliente.federalId}}</td>
-        <td>{{cliente.email}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <th>Nome</th>
+    <th>CPF/CNPJ</th>
+    <th>E-mail</th>
+    <th>Celular 1</th>
+    <th>Celular 2</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{cliente.name}}</td>
+      <td>{{cliente.federalId}}</td>
+      <td>{{cliente.email}}</td>
+      <td>{{cliente.phone}}</td>
+      <td>{{cliente.phone}}</td>
+      <td>
+        <span *ngIf="cliente.active" class="badge badge-success">Ativo</span>
+        <span *ngIf="!cliente.active" class="badge badge-danger">Inativo</span>
+      </td>
+      
+      <td><i class="fas fa-pencil-alt" (click)="editaCliente(cliente)"></i></td>
+      <td><i class="fas fa-trash-alt" (click)="excluiCliente(cliente)"></i></td>
+    </tr>
+  </tbody>
+</table>
