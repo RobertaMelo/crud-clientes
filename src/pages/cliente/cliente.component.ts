@@ -57,30 +57,30 @@ export class ClienteComponent implements OnInit {
     if (cliente.id == undefined) {
       return;
     }
-
     this.formGroup.controls.id.setValue(cliente.id);
-    this.formGroup.controls.name.setValue(cliente.name);
-    this.formGroup.controls.federalId.setValue(cliente.federalId);
-    this.formGroup.controls.registration.setValue(cliente.registration);
-    this.formGroup.controls.phone.setValue(cliente.phone);
-    this.formGroup.controls.phone2.setValue(cliente.phone2);
-    this.formGroup.controls.email.setValue(cliente.email);
-    this.formGroup.controls.emailCollection.setValue(cliente.emailCollection);
-    this.formGroup.controls.residentialPhone.setValue(cliente.residentialPhone);
-    this.formGroup.controls.commercialPhone.setValue(cliente.commercialPhone);
-    this.formGroup.controls.emergencyContact.setValue(cliente.emergencyContact);
-    this.formGroup.controls.emergencyPhone.setValue(cliente.emergencyPhone);
+    this.formGroup.controls.name.setValue(this.getEmptyIfNull(cliente.name));
+    this.formGroup.controls.federalId.setValue(this.getEmptyIfNull(cliente.federalId));
+    this.formGroup.controls.registration.setValue(this.getEmptyIfNull(cliente.registration));
+    this.formGroup.controls.phone.setValue(this.getEmptyIfNull(cliente.phone));
+    this.formGroup.controls.phone2.setValue(this.getEmptyIfNull(cliente.phone2));
+    this.formGroup.controls.email.setValue(this.getEmptyIfNull(cliente.email));
+    this.formGroup.controls.emailCollection.setValue(this.getEmptyIfNull(cliente.emailCollection));
+    this.formGroup.controls.residentialPhone.setValue(this.getEmptyIfNull(cliente.residentialPhone));
+    this.formGroup.controls.commercialPhone.setValue(this.getEmptyIfNull(cliente.commercialPhone));
+    this.formGroup.controls.emergencyContact.setValue(this.getEmptyIfNull(cliente.emergencyContact));
+    this.formGroup.controls.emergencyPhone.setValue(this.getEmptyIfNull(cliente.emergencyPhone));
     this.formGroup.controls.birthday.setValue(this.formataData(Number(cliente.birthday)));
     this.formGroup.controls.gender.setValue(cliente.gender);
     this.formGroup.controls.federalIdType.setValue(cliente.federalIdType);
     this.formGroup.controls.active.setValue(cliente.active);
+    
   }
 
   salvaCliente() {
     if (this.formGroup.controls.id.value == null) {
       this.clienteService.salva(this.formGroup.value)
       .subscribe(response => {
-        console.log('Salvo com sucesso!');
+       console.log('Salvo com sucesso!');
         this.iniciaNovoCliente();
       }, error => {
         console.log(error);
@@ -99,15 +99,25 @@ export class ClienteComponent implements OnInit {
 
   formataData(date) {
     let d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
+      month = '' + (d.getMonth() + 1),
+      day = ''+ (d.getDate()),
+      year = d.getFullYear();
+    console.log(date)
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
 }
+  trocaAtivo() {
+  this.formGroup.controls.active.setValue(this.formGroup.controls.active.value);
+  }
+
+  getEmptyIfNull(objeto) {
+  if (objeto != null) {
+      return objeto;
+  }
+  return "";
+  }
 
   ngOnDestroy() {
     this.sub.unsubscribe();

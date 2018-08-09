@@ -2,12 +2,13 @@
   <h2>Cadastro</h2>
     <hr/>
     <form [formGroup]="formGroup" (ngSubmit)="salvaCliente(); $event.preventDefault()">
+      
       <input type="hidden" formControlName="id">
       <div class="form-group row">
         <div class="col-1">
           Ativo
           <label class="switch">
-            <input type="checkbox" formControlName="active">
+            <input type="checkbox" formControlName="active" (click)="trocaAtivo()">
             <span class="slider"></span>
           </label>
         </div>
@@ -30,7 +31,7 @@
               <div class="invalid-feedback text-right" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors">Campo obrigatório!</div>
             </div>
           <div class="col-5">
-            <label for="federalId">CPF *</label>
+            <label for="federalId"> CPF/CNPJ *</label>
             <input formControlName="federalId" class="form-control">
             <div class="invalid-feedback text-right" *ngIf="formGroup.controls.federalId.dirty && formGroup.controls.federalId.errors">Campo obrigatório!</div>
           </div>
@@ -105,10 +106,10 @@
 
     <div class="form-group row">
       <div class="col-2">
-        <button type="button" class="btn btn-default btn-block" (click)="iniciaNovoCliente()">Limpar</button>
-      </div>
+          <button type="button" class="btn btn-success btn-block"  (click)="salvaCliente()">Salvar</button>
+        </div>
       <div class="col-2">
-        <button type="button" class="btn btn-success btn-block" (click)="salvaCliente()">Salvar</button>
+        <button type="button" class="btn btn-default btn-block" (click)="iniciaNovoCliente()">Limpar</button>
       </div>
     </div>
 
