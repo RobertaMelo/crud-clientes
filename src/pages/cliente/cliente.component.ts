@@ -72,8 +72,7 @@ export class ClienteComponent implements OnInit {
     this.formGroup.controls.birthday.setValue(this.formataData(Number(cliente.birthday)));
     this.formGroup.controls.gender.setValue(cliente.gender);
     this.formGroup.controls.federalIdType.setValue(cliente.federalIdType);
-    this.formGroup.controls.active.setValue(cliente.active);
-    
+    this.formGroup.controls.active.setValue(cliente.active.toString() == 'false' ? false : true);
   }
 
   salvaCliente() {
@@ -102,21 +101,17 @@ export class ClienteComponent implements OnInit {
       month = '' + (d.getMonth() + 1),
       day = ''+ (d.getDate()),
       year = d.getFullYear();
-    console.log(date)
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
-}
-  trocaAtivo() {
-  this.formGroup.controls.active.setValue(this.formGroup.controls.active.value);
   }
 
   getEmptyIfNull(objeto) {
-  if (objeto != null) {
-      return objeto;
-  }
-  return "";
+    if (objeto != 'null') {
+        return objeto;
+    }
+    return '';
   }
 
   ngOnDestroy() {

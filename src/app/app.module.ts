@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { BrMasker4Module } from 'brmasker4';
 import { AppComponent } from './app.component';
 import { ListarClientesComponent } from '../pages/listar-clientes/listar-clientes.component';
 import { ClienteComponent } from '../pages/cliente/cliente.component';
@@ -20,6 +21,7 @@ import { appRoutes } from './app.routes';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrMasker4Module,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

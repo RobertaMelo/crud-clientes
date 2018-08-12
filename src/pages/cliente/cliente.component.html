@@ -8,7 +8,7 @@
         <div class="col-1">
           Ativo
           <label class="switch">
-            <input type="checkbox" formControlName="active" (click)="trocaAtivo()">
+            <input type="checkbox" formControlName="active">
             <span class="slider"></span>
           </label>
         </div>
@@ -32,7 +32,7 @@
             </div>
           <div class="col-5">
             <label for="federalId"> CPF/CNPJ *</label>
-            <input formControlName="federalId" class="form-control">
+            <input formControlName="federalId" class="form-control" [brmasker]="{person: true}">
             <div class="invalid-feedback text-right" *ngIf="formGroup.controls.federalId.dirty && formGroup.controls.federalId.errors">Campo obrigatório!</div>
           </div>
           <div class="col-2 align-self-end">
@@ -66,24 +66,24 @@
     <div class="form-group row">
       <div class="col-6">
           <label for="phone">Celular 1 *</label>
-          <input formControlName="phone" class="form-control">
+          <input formControlName="phone" class="form-control" [brmasker]="{phone: true}">
           <div class="invalid-feedback text-right" *ngIf="formGroup.controls.phone.dirty && formGroup.controls.phone.errors">Campo obrigatório!</div>
       </div>
       <div class="col-6">
           <label for="phone2">Celular 2</label>
-          <input formControlName="phone2" class="form-control">
+          <input formControlName="phone2" class="form-control" [brmasker]="{phone: true}">
       </div>
     </div>
 
       <div class="form-group row">
         <div class="col-6">
             <label for="residentialPhone">Fone Residencial</label>
-            <input formControlName="residentialPhone" class="form-control">
+            <input formControlName="residentialPhone" class="form-control" [brmasker]="{phone: true}">
         </div>
 
         <div class="col-6">
             <label for="commercialPhone">Fone Comercial</label>
-            <input formControlName="commercialPhone" class="form-control">
+            <input formControlName="commercialPhone" class="form-control" [brmasker]="{phone: true}">
         </div>
       </div>
       <div class="form-group row">
@@ -94,7 +94,7 @@
 
         <div class="col-6">
             <label for="emergencyPhone">Telefone Emergencial</label>
-            <input formControlName="emergencyPhone" class="form-control">
+            <input formControlName="emergencyPhone" class="form-control" [brmasker]="{phone: true}">
         </div>
       </div>
 
